@@ -33,12 +33,8 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const results = document.getElementById('results');</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>results.innerHTML = '&lt;p&gt;Fetching follower counts...&lt;/p&gt;';</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Note: This example assumes a backend API to fetch follower counts exists.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Replace the following simulated fetch process with actual API calls.</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const counts = await Promise.all(platforms.map(async platform =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// Simulate fetching data</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const response = await fetch(`/api/followers?platform=${platform.name}`);</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (!response.ok) throw new Error(`Failed to fetch data for ${platform.name}`);</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const data = await response.json();</span></p>
