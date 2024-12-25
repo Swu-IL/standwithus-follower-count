@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;StandWithUs Follower Count&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>async function fetchFollowerCounts() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const platforms = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Facebook', url: 'https://www.facebook.com/StandWithUs' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Instagram', url: 'https://www.instagram.com/standwithus/' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Twitter', url: 'https://twitter.com/StandWithUs' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Threads', url: 'https://www.threads.net/@standwithus' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'YouTube', url: 'https://www.youtube.com/StandWithUs' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'TikTok', url: 'https://www.tiktok.com/@standwithus' }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const results = document.getElementById('results');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>results.innerHTML = '&lt;p&gt;Fetching follower counts...&lt;/p&gt;';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Note: This example assumes a backend API to fetch follower counts exists.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Replace the following simulated fetch process with actual API calls.</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const counts = await Promise.all(platforms.map(async platform =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// Simulate fetching data</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const response = await fetch(`/api/followers?platform=${platform.name}`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (!response.ok) throw new Error(`Failed to fetch data for ${platform.name}`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const data = await response.json();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>return { platform: platform.name, count: data.followerCount };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}));</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>results.innerHTML = counts.map(c =&gt; `&lt;p&gt;${c.platform}: ${c.count} followers&lt;/p&gt;`).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error(error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>results.innerHTML = '&lt;p&gt;Error fetching follower counts. Please try again later.&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', fetchFollowerCounts);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;StandWithUs Social Media Followers&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="results"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Follower counts will appear here --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
